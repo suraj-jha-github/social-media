@@ -1,0 +1,160 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+
+a{
+  color: black !important ;
+}
+
+.brand-logo,h2{
+  font-family: 'Grand Hotel', cursive;
+}
+.my-card{
+    margin-top: 30px;
+}
+
+.auth-card{
+  padding: 2rem;
+  text-align: center;
+  max-width: 40rem;
+  margin:10px auto;
+}
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid rgb(77, 9, 62) !important ;
+  box-shadow: 0 1px 0 0 rgb(88, 7, 88) !important ;
+}
+.input-field input[type=password]:focus {
+  border-bottom: 1px solid rgb(77, 9, 62) !important ;
+  box-shadow: 0 1px 0 0 rgb(88, 7, 88) !important ;
+}
+.redirect-link:hover{
+  color: #52052f;
+}
+.gallery{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.item{
+  width: 30%;
+}
+.home{
+  
+}
+.home-card{
+  max-width: 500px;
+  height: max-content;
+  margin: 26px auto;
+}
+#toast-container{
+  top: 30px !important ;
+  right: 20px !important;
+  left: auto !important;
+
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+
+ul li{
+  list-style-type: none;
+}
+
+.nav{
+  display: flex;
+  background-color: gray;
+  height: 15vh;
+}
+
+.navleft{
+  width: 50vw;
+}
+
+.navleft h1{
+  margin: 1rem 1rem;
+  font-size: 1.5rem;
+  padding: .7rem;
+  color: black;
+  cursor: pointer;
+}
+
+.navright{
+  width: 50vw;
+}
+
+.navright ul{
+  display: flex;
+  float: right;
+}
+
+.navright ul li{
+  padding: 1rem 1rem;
+  color: white;
+  /* transition: all .5s ease-in; */
+  cursor: pointer;
+}
+
+.navright ul li:hover{
+  transform: scale(1.2);
+}
+.navleft h1:hover{
+  transform: scale(1.2);
+}
+
+.burger i{
+  position: absolute;
+  top: .9rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: white;
+  display: none;
+  cursor: pointer;
+}
+
+@media only screen and (max-width:600px){
+  .nav{
+    flex-direction: column;
+    height: 18rem;
+  }
+  .navleft{
+    width: 100vw
+  }
+  .navleft h1{
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .navright{
+    width: 100vw;
+  }
+  .navright ul{
+    flex-direction: column;
+  }
+  .navright{
+    text-align: center;
+  }
+  .navright ul li{
+    margin: 0 31vw;
+  }
+  #h-res{
+    height: 4rem;
+  }
+  #v-res{
+    display: none;
+  }
+  .burger i{
+    display: block;
+  }
+  .mob-view{
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+  .mob-view-info{
+    display: flex;
+    flex-direction: column;
+    margin: 0 3rem;
+  }
+}
+
+
