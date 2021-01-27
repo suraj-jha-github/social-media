@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
 
 a{
-  color: black !important ;
+  color: rgb(253, 252, 252) !important ;
 }
 
 .brand-logo,h2{
@@ -51,6 +51,9 @@ a{
   left: auto !important;
 
 }
+.collection-item{
+  width: 100%;
+}
 *{
   margin: 0;
   padding: 0;
@@ -62,7 +65,7 @@ ul li{
 
 .nav{
   display: flex;
-  background-color: gray;
+  background-color:#640864;
   height: 15vh;
 }
 
@@ -74,7 +77,7 @@ ul li{
   margin: 1rem 1rem;
   font-size: 1.5rem;
   padding: .7rem;
-  color: black;
+  color: #ffffff;
   cursor: pointer;
 }
 
@@ -114,7 +117,7 @@ ul li{
 @media only screen and (max-width:600px){
   .nav{
     flex-direction: column;
-    height: 18rem;
+    height: 24rem;
   }
   .navleft{
     width: 100vw
