@@ -199,14 +199,14 @@ const Home = () => {
               <i className="material-icons" 
               onClick={()=>{unheartPost(item._id)}}
               style={{ color: "red",marginRight:"50px" }}>
-                favorite_border
+                favorite
               </i>
               :
               <i className="material-icons"
               style={{ color: "red" ,marginRight:"50px"}}
               onClick={()=>{heartPost(item._id)}}
               >
-               favorite
+               favorite_border
              </i>
               
               }
