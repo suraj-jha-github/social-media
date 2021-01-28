@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../App";
 // import UserProfile from "./UserProfile";
+import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 
 const Home = () => {
 
@@ -219,7 +221,8 @@ const Home = () => {
                     unlikePost(item._id);
                   }}
                 >
-                  thumb_down
+                  <ThumbUpIcon/>
+                 
                 </i>
               ) : (
                 <i
@@ -229,7 +232,8 @@ const Home = () => {
                   }}
                   
                 >
-                  thumb_up
+                  <ThumbUpAltOutlinedIcon/>
+                  
                 </i>
               )}
               </div>
