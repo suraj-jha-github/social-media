@@ -26,6 +26,18 @@ a{
   border-bottom: 1px solid rgb(77, 9, 62) !important ;
   box-shadow: 0 1px 0 0 rgb(88, 7, 88) !important ;
 }
+.material-icons:hover{
+  color: #640864 !important;
+  cursor: pointer;
+}
+.material-icons{
+ 
+  color: #df3bdf;
+}
+.search-icon:hover{
+  color: black !important;
+}
+
 .redirect-link:hover{
   color: #52052f;
 }
@@ -54,6 +66,9 @@ a{
 .collection-item{
   width: 100%;
 }
+.posted-user{
+  color: #52052f !important;
+}
 *{
   margin: 0;
   padding: 0;
@@ -66,7 +81,7 @@ ul li{
 .nav{
   display: flex;
   background-color:#640864;
-  height: 15vh;
+  height: 10vh;
 }
 
 .navleft{

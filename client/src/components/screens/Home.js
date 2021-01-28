@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import { delete } from "../../../../server/routes/auth";
 import { UserContext } from "../../App";
 // import UserProfile from "./UserProfile";
 
 const Home = () => {
+
   const [data, setData] = useState([]);
   const { state, dispatch } = useContext(UserContext);
   useEffect(() => {
@@ -15,12 +15,66 @@ const Home = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         setData(result.posts);
       });
   }, []);
   const likePost = (id) => {
     fetch("/like", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        //   console.log(result)
+        const newData = data.map((item) => {
+          if (item._id === result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setData(newData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const heartPost = (id) => {
+    fetch("/heart", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        postId: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+          // console.log(result)
+        const newData = data.map((item) => {
+          if (item._id === result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setData(newData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const unheartPost = (id) => {
+    fetch("/unheart", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -88,7 +142,7 @@ const Home = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         const newData = data.map((item) => {
           if (item._id === result._id) {
             return result;
@@ -112,7 +166,7 @@ const Home = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         const newData=data.filter(item=>{
             return item._id !==result._id
         })
@@ -126,7 +180,7 @@ const Home = () => {
         return (
           <div className="card home-card" key={item._id}>
             <h5>
-              <Link to={item.postedBy._id !== state._id?"/profile/"+item.postedBy._id :"/profile/"}>{item.postedBy.name} </Link>
+              <Link to={item.postedBy._id !== state._id?"/profile/"+item.postedBy._id :"/profile/"} className="posted-user" >{item.postedBy.name} </Link>
               
               {item.postedBy._id === state._id && (
                 <i className="material-icons" style={{ float: "right" }}
@@ -140,9 +194,24 @@ const Home = () => {
               <img src={item.photo} alt="" />
             </div>
             <div className="card-content">
-              {/* <i className="material-icons" style={{ color: "red" }}>
-                favorite
-              </i> */}
+              <div style={{display:"flex"}}>
+              {item.heart.includes(state._id)?
+              <i className="material-icons" 
+              onClick={()=>{unheartPost(item._id)}}
+              style={{ color: "red",marginRight:"50px" }}>
+                favorite_border
+              </i>
+              :
+              <i className="material-icons"
+              style={{ color: "red" ,marginRight:"50px"}}
+              onClick={()=>{heartPost(item._id)}}
+              >
+               favorite
+             </i>
+              
+              }
+              
+              
               {item.likes.includes(state._id) ? (
                 <i
                   className="material-icons"
@@ -158,13 +227,18 @@ const Home = () => {
                   onClick={() => {
                     likePost(item._id);
                   }}
+                  
                 >
                   thumb_up
                 </i>
               )}
-
+              </div>
+              <div style={{display:"flex"}}>
+              <h6 style={{marginRight:"1rem"}}>{item.heart.length} hearts </h6>
               <h6>{item.likes.length} likes </h6>
-              <h6>{item.title}</h6>
+              </div>
+              
+              <h4>{item.title}</h4>
               <p>{item.body}</p>
               {item.comments.map((record) => {
                 return (
@@ -177,7 +251,9 @@ const Home = () => {
                 );
               })}
               <form
+             
                 onSubmit={(e) => {
+                  
                   e.preventDefault();
                   makeComment(e.target[0].value, item._id);
                 }}

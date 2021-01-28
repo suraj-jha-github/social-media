@@ -19,7 +19,7 @@ const Navbar = () => {
     if (state) {
       return [
         <li key="1">
-          <i data-target="modal1" className=" material-icons modal-trigger">
+          <i data-target="modal1" className=" material-icons modal-trigger search-icon" style={{color:"white"}}>
             search
           </i>
         </li>,
